@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="ブラウザだけで使える、シンプルな日本語テキストエディタです。">
+  <meta name="description" content="ChatGPTで作った、ブラウザで動くシンプルなテキストエディタ（学習・検証目的の非公式作品）">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src data:; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>つくってためそ メモ帳｜制作支援：ChatGPT</title>
+  <title>無題.txt - つくってためそ メモ帳 ChatGPT版</title>
   <style>
     :root {
       color-scheme: light;
@@ -100,18 +100,6 @@
       font-size: 13px;
       font-weight: 600;
       text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .creation-credit {
-      flex: 0 0 auto;
-      padding: 3px 7px;
-      border: 1px solid #b9d5ec;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #285979;
-      font-size: 10px;
-      font-weight: 600;
       white-space: nowrap;
     }
 
@@ -452,11 +440,6 @@
         white-space: nowrap;
       }
 
-      .creation-credit {
-        padding-inline: 6px;
-        font-size: 9px;
-      }
-
       .menu-panel {
         position: fixed;
         top: 76px;
@@ -509,11 +492,10 @@
   </style>
 </head>
 <body>
-  <main class="app-shell" aria-label="つくってためそ メモ帳">
+  <main class="app-shell" aria-label="つくってためそ メモ帳 ChatGPT版">
     <header class="titlebar">
       <span class="app-mark" aria-hidden="true">文</span>
-      <span class="app-title" id="windowTitle">無題.txt - つくってためそ メモ帳</span>
-      <span class="creation-credit">制作支援：ChatGPT</span>
+      <span class="app-title" id="windowTitle">無題.txt - つくってためそ メモ帳 ChatGPT版</span>
     </header>
 
     <nav class="menubar" aria-label="メインメニュー">
@@ -558,7 +540,7 @@
       <span class="status-item" id="countStatus">0 文字</span>
       <span class="status-item" id="saveStatus">ブラウザに保存済み</span>
     </footer>
-    <div class="disclaimer">学習・検証目的の非公式作品です。実在のソフトの開発元とは関係ありません。制作支援にChatGPTを使用しています。ChatGPTはOpenAIの商標です。</div>
+    <div class="disclaimer">学習・検証目的の非公式作品です。実在のソフトの開発元とは関係ありません。入力内容はこのブラウザ内にのみ保存され、外部へは送信されません。ChatGPTはOpenAIの商標です。</div>
   </main>
 
   <input id="fileInput" type="file" accept=".txt,text/plain" hidden>
@@ -804,8 +786,8 @@
 
       function updateTitle() {
         const marker = dirty ? "*" : "";
-        windowTitle.textContent = `${marker}${fileName} - つくってためそ メモ帳`;
-        document.title = `${marker}${fileName} - つくってためそ メモ帳｜制作支援：ChatGPT`;
+        windowTitle.textContent = `${marker}${fileName} - つくってためそ メモ帳 ChatGPT版`;
+        document.title = `${marker}${fileName} - つくってためそ メモ帳 ChatGPT版`;
         fileStatus.textContent = `${marker}${fileName}`;
       }
 
