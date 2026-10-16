@@ -6,7 +6,7 @@
   <meta name="description" content="ブラウザだけで使える、シンプルな日本語テキストエディタです。">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src data:; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>つくってためそ メモ帳</title>
+  <title>つくってためそ メモ帳｜制作支援：ChatGPT</title>
   <style>
     :root {
       color-scheme: light;
@@ -59,8 +59,11 @@
       display: grid;
       grid-template-rows: 38px 36px minmax(0, 1fr) auto auto;
       width: min(1180px, 100%);
+      max-width: 100vw;
+      min-width: 0;
       height: 100dvh;
       margin: 0 auto;
+      overflow: hidden;
       background: #fff;
       border-inline: 1px solid var(--border);
       box-shadow: 0 0 28px rgba(0, 0, 0, 0.08);
@@ -70,6 +73,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
       padding: 0 14px;
       background: #fafafa;
       border-bottom: 1px solid var(--border);
@@ -90,10 +94,24 @@
     }
 
     .app-title {
+      min-width: 0;
+      flex: 1;
       overflow: hidden;
       font-size: 13px;
       font-weight: 600;
       text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .creation-credit {
+      flex: 0 0 auto;
+      padding: 3px 7px;
+      border: 1px solid #b9d5ec;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #285979;
+      font-size: 10px;
+      font-weight: 600;
       white-space: nowrap;
     }
 
@@ -419,9 +437,24 @@
         padding-inline: 2px;
       }
 
+      .titlebar {
+        gap: 6px;
+        padding-inline: 8px;
+      }
+
+      .app-mark {
+        width: 20px;
+        height: 20px;
+      }
+
       .menu-trigger {
         padding-inline: 13px;
         white-space: nowrap;
+      }
+
+      .creation-credit {
+        padding-inline: 6px;
+        font-size: 9px;
       }
 
       .menu-panel {
@@ -480,6 +513,7 @@
     <header class="titlebar">
       <span class="app-mark" aria-hidden="true">文</span>
       <span class="app-title" id="windowTitle">無題.txt - つくってためそ メモ帳</span>
+      <span class="creation-credit">制作支援：ChatGPT</span>
     </header>
 
     <nav class="menubar" aria-label="メインメニュー">
@@ -524,7 +558,7 @@
       <span class="status-item" id="countStatus">0 文字</span>
       <span class="status-item" id="saveStatus">ブラウザに保存済み</span>
     </footer>
-    <div class="disclaimer">学習・検証目的の非公式作品です。実在のソフトの開発元とは関係ありません。</div>
+    <div class="disclaimer">学習・検証目的の非公式作品です。実在のソフトの開発元とは関係ありません。制作支援にChatGPTを使用しています。ChatGPTはOpenAIの商標です。</div>
   </main>
 
   <input id="fileInput" type="file" accept=".txt,text/plain" hidden>
@@ -771,7 +805,7 @@
       function updateTitle() {
         const marker = dirty ? "*" : "";
         windowTitle.textContent = `${marker}${fileName} - つくってためそ メモ帳`;
-        document.title = `${marker}${fileName} - つくってためそ メモ帳`;
+        document.title = `${marker}${fileName} - つくってためそ メモ帳｜制作支援：ChatGPT`;
         fileStatus.textContent = `${marker}${fileName}`;
       }
 
